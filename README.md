@@ -23,7 +23,7 @@ brew install ffmpeg
 ```
 
 ### 3. Prepare Files
-Place your photos and videos in the `pics` folder. Ensure video files are in `.mp4` format.
+Place your photos and videos in the `pics` folder. Photos can at least be in `png` or `jpg` format. Videos can at least be in `mp4` or `mov` format.
 
 Now let's see what different options we have.
 
