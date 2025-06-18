@@ -10,6 +10,10 @@ For example :
 ```bash
 python3 -m venv .venv
 ```
+Then, enter in your virtual machine :
+```bash
+source .venv/bin/activate
+```
 
 ### 2. Install Dependencies
 Run the following commands to install the required dependencies:
