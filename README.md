@@ -8,7 +8,7 @@ To set up the environment for the **Blur** project, follow these detailed steps:
 Set up a virtual machine using your preferred tool (e.g., VirtualBox, VMware, or a cloud provider). Ensure the virtual machine has Python installed.
 For example :
 ```bash
-python -m venv .venv
+python3 -m venv .venv
 ```
 
 ### 2. Install Dependencies
