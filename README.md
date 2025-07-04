@@ -78,25 +78,21 @@ Make sure to add it to the `utils` folder, and to change the name in the variabl
 
 ## LICENSE
 
-This project is released under the **MIT License**, which allows for free use, modification, and distribution, including for commercial purposes, as long as the original copyright notice is preserved.
+This project is licensed under the **GNU Affero General Public License v3.0 (AGPL-3.0)**.
 
-### Important Notice Regarding YOLOv8 (AGPL-3.0)
+You are free to use, modify, and distribute this software, provided that:
+- You include the full source code, including any modifications, when distributing or deploying the software (e.g., in a web service).
+- You retain the original copyright notice.
+- You comply with the terms of the AGPL-3.0 license.
 
-The use of Ultralytics YOLOv8 is subject to the AGPL-3.0 license. This license requires that:
+For more details, see the full license text here: [https://www.gnu.org/licenses/agpl-3.0.html](https://www.gnu.org/licensesarding YOLOv8 (AGPL-3.0)
 
-- If you **redistribute** this project or use it in a **public-facing service** (e.g., a web API or SaaS platform), you must also **publish your full source code**, including any modifications.
-- If you wish to use YOLOv8 in a **closed-source commercial product**, you must obtain a **commercial license** from Ultralytics: https://ultralytics.com/license
+This project uses [Ultralytics YOLOv8](https://also licensed under AGPL-3.0. This means:
 
-### Commercial Use
+- If you redistribute this project or use it in a public-facing service (e.g., a web API or SaaS platform), you must also publish your full source code, including any modifications.
+- If you wish to use YOLOv8 in a closed-source commercial product, you must obtain a commercial license from Ultralytics: [https://ultralytics.com/license](https## Commercial Use
 
-You are free to use this project for commercial purposes **as long as it remains open source** and complies with the AGPL-3.0 requirements for YOLOv8. If you plan to keep your code private or integrate it into proprietary software, you must either:
+You may use this project for commercial purposes **as long as it remains open source** and complies with the AGPL-3.0 requirements. If you plan to keep your code private or integrate it into proprietary software, you must either:
 
 - Replace YOLOv8 with an alternative model under a more permissive license (e.g., MIT or Apache 2.0), or
 - Purchase a commercial license from Ultralytics.
-
-Please ensure you understand and comply with all relevant licenses before deploying or distributing this project.
-
-
-
-
-
