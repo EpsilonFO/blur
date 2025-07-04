@@ -85,12 +85,12 @@ You are free to use, modify, and distribute this software, provided that:
 - You retain the original copyright notice.
 - You comply with the terms of the AGPL-3.0 license.
 
-For more details, see the full license text here: [https://www.gnu.org/licenses/agpl-3.0.html](https://www.gnu.org/licensesarding YOLOv8 (AGPL-3.0)
+For more details, see the full license text [here](https://www.gnu.org/licenses/agpl-3.0.txt).
 
-This project uses [Ultralytics YOLOv8](https://also licensed under AGPL-3.0. This means:
+This project uses [Ultralytics YOLOv8](https://docs.ultralytics.com/fr/models/yolov8/), also licensed under AGPL-3.0. This means:
 
 - If you redistribute this project or use it in a public-facing service (e.g., a web API or SaaS platform), you must also publish your full source code, including any modifications.
-- If you wish to use YOLOv8 in a closed-source commercial product, you must obtain a commercial license from Ultralytics: [https://ultralytics.com/license](https## Commercial Use
+- If you wish to use YOLOv8 in a closed-source commercial product, you must obtain a [commercial license from Ultralytics](https://ultralytics.com/license).
 
 You may use this project for commercial purposes **as long as it remains open source** and complies with the AGPL-3.0 requirements. If you plan to keep your code private or integrate it into proprietary software, you must either:
 
