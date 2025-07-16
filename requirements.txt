@@ -1,0 +1,9 @@
+moviepy==2.2.1
+numpy==1.25.0
+onnx==1.18.0
+onnxruntime==1.19.2
+openai-whisper==20250625
+opencv-python==4.11.0.86
+scipy==1.11.4
+tqdm==4.67.1
+ultralytics==8.3.159
