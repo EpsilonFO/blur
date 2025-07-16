@@ -78,8 +78,17 @@ python blur.py name_of_file_or_folder.extension --blur
 ```
 
 ### Optional : Upgrade performances
-The script uses the YOLO model, which has different versions, and impacts the performances and the precision of the detection. Here, the `yolov8n` model is used, which is the smallest one, but you can download and use some different models on the [github page](https://github.com/lindevs/yolov8-face) by clicking on the `ONNX` link (AND ONLY ONNX TYPE, NOT PYTORCH, TO AVOID BACKDOORS), as shown on the picture below :
-![](utils/yolo_links.png)
+The script uses the YOLO model, which has different versions, and impacts the performances and the precision of the detection. Here, the `yolov8n` model is used, which is the smallest one, but you can download and use some different models by choosing these different models trained by [lindevs](https://github.com/lindevs/yolov8-face) :
+
+| Name         | Model Size (MB) |
+|--------------|-----------------|
+| [YOLOv8n-Face](https://github.com/lindevs/yolov8-face/releases/latest/download/yolov8n-face-lindevs.onnx) | 11.7            |
+| [YOLOv8s-Face](https://github.com/lindevs/yolov8-face/releases/latest/download/yolov8s-face-lindevs.onnx) | 42.7            |
+| [YOLOv8m-Face](https://github.com/lindevs/yolov8-face/releases/latest/download/yolov8m-face-lindevs.onnx) | 98.8            |
+| [YOLOv8l-Face](https://github.com/lindevs/yolov8-face/releases/latest/download/yolov8l-face-lindevs.onnx) | 166.6           |
+| [YOLOv8x-Face](https://github.com/lindevs/yolov8-face/releases/latest/download/yolov8x-face-lindevs.onnx) | 260.1           |
+
+
 Make sure to add it to the `utils` folder, and to change the name in the variable `model` located in the `config` file.
 
 ## Acknowledgements
