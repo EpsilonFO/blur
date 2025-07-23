@@ -1,7 +1,8 @@
 import cv2
 import numpy as np
 
-from config import blur_size, pixel_size, model
+from config import blur_size, pixel_size, model, margin
+from scripts.detect import detect_and_anonymize_faces
 
 # Fonction de pixellisation
 def apply_pixelation(frame, x, y, w, h):
@@ -25,19 +26,7 @@ while True:
     ret, frame = cap.read()
     if not ret:
         break
-
-    # Détection des visages avec YOLO
-    results = model(frame)
-
-    for result in results:
-        for box in result.boxes:
-            x1, y1, x2, y2 = map(int, box.xyxy[0])
-            w, h = x2 - x1, y2 - y1
-
-            if mode == 'pixelate':
-                frame = apply_pixelation(frame, x1, y1, w, h)
-            elif mode == 'blur':
-                frame = apply_blur(frame, x1, y1, w, h)
+    frame = detect_and_anonymize_faces(frame, mode)
 
     # Affichage
     cv2.putText(frame, f'Mode: {mode.upper()}', (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
