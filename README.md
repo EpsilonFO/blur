@@ -48,15 +48,15 @@ The files will be saved at the same place of the original ones.
 Images will be named the same as the original ones, with `_blurred` at the end of their name (and the same extension).
 
 #### Videos
-Once the execution is finished, you end up with 3 different files :
+Once the execution is finished, you end up with 4 different files :
 
 - `filename_blurred.extension` : this is the original video, with all faces blurred
 - `filename_blurred_anonymized.extension` : this is the video with all faces blurred and voices anonymized
-- `filename_blurred.extension.srt` : this is the subtitles file. They are not added by default to the videos, but you can add them with the following command :
+- `filename_subtitled.extension` : this is the video with all faces blurred and voices anonymized, with subtitles (generated automatically). If there is any mistake, you can change them by modifying the following file.
+- `filename_blurred.extension.srt` : this is the subtitles file. They are added by default to the videos. To rectify a mistake, you can open it in a text editor, rectify the mistake, then execute the following command in your command line :
 ```bash
-ffmpeg -i video_to_subtitle.extension -vf subtitles=filename.extension.srt -c:a copy output_filename.extension
+ffmpeg -i filename_blurred_anonymized.extension -vf subtitles=filename_blurred.extension.srt -c:a copy filename_subtitled.extension
 ```
-Note that the subtitles can be imperfect sometimes, you can modify the text and even the timestamp in the `.srt` file by opening it in a text editor. You will have to execute the command above again after modifying the file to update the video.
 
 ### Real time video blur
 You can also blur your face in real time with your camera :
