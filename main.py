@@ -7,8 +7,6 @@ from scripts.video import process_video, add_audio_to_video
 from scripts.audio import process_audio
 
 
-
-
 def main(path, use_blur='pixelate'):
     """
     Main processing function that handles files or directories based on input path.
@@ -31,7 +29,7 @@ def main(path, use_blur='pixelate'):
             base, ext = os.path.splitext(input_path)
             tmp_video_path = f"{base}_tmp{ext}"  # Temporary video without audio
             blurred_output_path = f"{base}_blurred{ext}"  # Video with blurred faces and original audio
-            
+            anonymized_output_path = f"{base}_blurred_anonymized{ext}"
             # Step 1: Process video frames (blur/pixelate faces)
             process_video(input_path, tmp_video_path, method=use_blur)
             
@@ -39,12 +37,17 @@ def main(path, use_blur='pixelate'):
             add_audio_to_video(input_path, tmp_video_path, blurred_output_path)
             
             # Step 3: Create final version with anonymized audio and subtitles
-            process_audio(blurred_output_path, f"{base}_blurred_anonymized{ext}")
+            process_audio(blurred_output_path, anonymized_output_path)
             
+            # Step 4: Add subtitles to the blurred video
+            subtitled_output_path = f"{base}_subtitled.mov"
+            anonymized_output_path = f"{base}_blurred_anonymized{ext}"
+            os.system(f'ffmpeg -i "{anonymized_output_path}" -vf subtitles="{blurred_output_path}.srt" -c:a copy "{subtitled_output_path}"')
+
             # Clean up temporary file
             os.remove(tmp_video_path)
             
-            print(f"✅ Final video generated: {base}_blurred_anonymized{ext}")
+            print(f"✅ Blurred, blurred + anonymized and blurred + anonymized + subtitled video generated !")
     
     # Check if path is a directory
     elif os.path.isdir(path):
