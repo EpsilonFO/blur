@@ -3,7 +3,7 @@ import os
 
 from scripts.detect import detect_and_anonymize_faces
 
-def process_image(image_path, method='pixelate'):
+def process_image(image_path, use_blur='pixelate'):
     """
     Traite une image pour flouter ou pixelliser les visages.
     """
@@ -12,8 +12,8 @@ def process_image(image_path, method='pixelate'):
         print(f"Erreur : impossible de lire l'image {image_path}")
         return
 
-    img = detect_and_anonymize_faces(img, method)
+    img = detect_and_anonymize_faces(img, use_blur)
     base, ext = os.path.splitext(image_path)
-    output_path = f"{base}_anonymized{ext}"
+    output_path = f"{base}_blurred{ext}"
     cv2.imwrite(output_path, img)
     print(f"Image sauvegardée : {output_path}")

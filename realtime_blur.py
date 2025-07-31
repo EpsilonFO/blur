@@ -1,3 +1,8 @@
+"""
+Script to apply face anonymization techniques (blurring and pixelation) 
+in real-time using a webcam feed.
+"""
+
 import cv2
 import numpy as np
 

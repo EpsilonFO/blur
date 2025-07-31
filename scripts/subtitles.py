@@ -1,4 +1,5 @@
 import whisper
+import subprocess
 
 def format_timestamp(seconds):
     """
@@ -47,3 +48,22 @@ def generate_subtitles(audio_path, srt_path):
             f.write(f"{format_timestamp(start)} --> {format_timestamp(end)}\n")
             f.write(f"{text}\n\n")
 
+def add_subtitles(video_path, srt_path, output_path):
+    """
+    Add subtitles to a video file using FFmpeg.
+    
+    Args:
+        video_path (str): Path to input video file
+        srt_path (str): Path to SRT subtitle file
+        output_path (str): Path for output video with subtitles
+    """
+    command = [
+        "ffmpeg",
+        "-y",  # Overwrite output file if it exists
+        "-i", video_path,
+        "-vf", f"subtitles={srt_path}",
+        "-c:v", "libx264",
+        "-c:a", "aac",
+        output_path
+    ]
+    subprocess.run(command, check=True)

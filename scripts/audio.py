@@ -5,7 +5,7 @@ from moviepy import VideoFileClip, AudioFileClip
 from scripts.fourier import fourier_transform
 from scripts.subtitles import generate_subtitles
 
-def process_audio(video_path, output_path):
+def process_audio(video_path, output_path, output_srt):
     """
     Process video audio: anonymize voices and generate subtitles.
     
@@ -13,8 +13,6 @@ def process_audio(video_path, output_path):
         video_path (str): Path to input video file
         output_path (str): Path for final output video with anonymized audio
     """
-    # Generate subtitle file path
-    output_srt = f"{video_path}.srt"
     
     # Use temporary directory for intermediate audio files
     with tempfile.TemporaryDirectory() as tmpdir:
@@ -26,7 +24,6 @@ def process_audio(video_path, output_path):
         # Anonymize audio by pitch shifting
         fourier_transform(video, audio_path, anonymized_audio_path)
         
-        # Generate subtitles from original audio (before pitch shifting for better accuracy)
         generate_subtitles(audio_path, output_srt)
         
         # Load anonymized audio and create final video

@@ -5,9 +5,9 @@ from tqdm import tqdm
 
 from scripts.detect import detect_and_anonymize_faces
 
-def process_video(input_path, output_path, method='pixelate'):
+def process_video(input_path, output_path, use_blur='pixelate'):
     """
-    Traite une vidéo pour flouter ou pixelliser les visages dans chaque frame.
+    Treat a video to blur or pixelate faces.
     """
     cap = cv2.VideoCapture(input_path)
     if not cap.isOpened():
@@ -26,7 +26,7 @@ def process_video(input_path, output_path, method='pixelate'):
         ret, frame = cap.read()
         if not ret:
             break
-        frame = detect_and_anonymize_faces(frame, method)
+        frame = detect_and_anonymize_faces(frame, use_blur)
         out.write(frame)
 
     cap.release()
@@ -57,4 +57,4 @@ def add_audio_to_video(original_video, video_no_audio, output_with_audio):
     ]
     
     # Execute FFmpeg command (suppress output for cleaner console)
-    subprocess.run(command, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    subprocess.run(command)#, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)

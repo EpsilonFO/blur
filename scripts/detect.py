@@ -2,24 +2,24 @@ import cv2
 
 from config import blur_size, pixel_size, model, margin
 
-def anonymize_face(image, x, y, w, h, method='pixelate'):
+def anonymize_face(image, x, y, w, h, use_blur='pixelate'):
     """
     Applique un floutage ou une pixellisation sur une région du visage.
     """
     face = image[y:y+h, x:x+w]
 
-    if method == 'blur':
+    if use_blur == 'blur':
         face = cv2.GaussianBlur(face, (blur_size, blur_size), 0)
-    elif method == 'pixelate':
+    elif use_blur == 'pixelate':
         temp = cv2.resize(face, (pixel_size, pixel_size), interpolation=cv2.INTER_LINEAR)
         face = cv2.resize(temp, (w, h), interpolation=cv2.INTER_NEAREST)
     else:
-        raise ValueError(f"Méthode inconnue : {method} ; utilisez 'blur' ou 'pixelate'.")
+        raise ValueError(f"Méthode inconnue : {use_blur} ; utilisez 'blur' ou 'pixelate'.")
 
     image[y:y+h, x:x+w] = face
     return image
 
-def detect_and_anonymize_faces(img, method='pixelate'):
+def detect_and_anonymize_faces(img, use_blur='pixelate'):
     """
     Détecte les visages avec YOLO et applique l'anonymisation.
     """
@@ -38,6 +38,6 @@ def detect_and_anonymize_faces(img, method='pixelate'):
             y2_m = min(height, int(y2 + h * margin))
 
             new_w, new_h = x2_m - x1_m, y2_m - y1_m
-            img = anonymize_face(img, x1_m, y1_m, new_w, new_h, method)
+            img = anonymize_face(img, x1_m, y1_m, new_w, new_h, use_blur)
 
     return img

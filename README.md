@@ -39,7 +39,7 @@ To blur the faces on your pictures or videos, follow these simple steps :
 ```bash
 python main.py name_of_file_or_folder.extension
 ```
-- Wait for the process (the progress bar indicates how long it will take - usually really fast for photos, longer for videos)
+- Wait for the process (the progress bar indicates how long it will take - usually really fast for photos, a bit longer for videos)
 
 If you give a name of folder, all the files in the folder will be processed.
 The files will be saved at the same place of the original ones.
@@ -53,9 +53,9 @@ Once the execution is finished, you end up with 4 different files :
 - `filename_blurred.extension` : this is the original video, with all faces blurred
 - `filename_blurred_anonymized.extension` : this is the video with all faces blurred and voices anonymized
 - `filename_subtitled.extension` : this is the video with all faces blurred and voices anonymized, with subtitles (generated automatically). If there is any mistake, you can change them by modifying the following file.
-- `filename_blurred.extension.srt` : this is the subtitles file. They are added by default to the videos. To rectify a mistake, you can open it in a text editor, rectify the mistake, then execute the following command in your command line :
+- `filename_blurred.srt` : this is the subtitles file. They are added by default to the `_anonymized` video. To rectify a subtitle mistake, you can open it in a text editor, rectify the mistake, then execute the following command in your command line :
 ```bash
-ffmpeg -i filename_blurred_anonymized.extension -vf subtitles=filename_blurred.extension.srt -c:a copy filename_subtitled.extension
+ffmpeg -i filename_blurred_anonymized.extension -vf subtitles=filename_blurred.srt -c:a copy filename_subtitled.extension
 ```
 
 ### Real time video blur
@@ -71,10 +71,16 @@ For both pre-recorded or realtime blur, you can change the power of the pixelate
 ### Optional : Change the voice anonymization
 To anonymize the voice, we created a non-inversible method, using fast fourier transformations. However, depending on the speaker's voice, anonymization may be more or less satisfactory. To modify the result, you can change the value of the `shift_amount` variable in the `config` file.
 
+### Optional : Other type of voice blur
+Another type of voice blur is implemented in the script. It uses 2 AI libraries, first to proceed to Speech-To-Text (STT) with [Whisper from OpenAI](https://huggingface.co/openai/whisper-large-v3-turbo), then use this text for Text-To-Speech (TTS) with [XTTS-v2 from Coqui](https://huggingface.co/coqui/XTTS-v2). We will have a completely synthetized voice, which makes it completely unrecognizable. However, nowadays models are still not fully convincing, because you lose a lot of speech details and emotions. To use this format, just add `--tts` to the end of your command line :
+```bash
+python main.py name_of_file_or_folder.extension --tts
+```
+
 ### Optional : Different blur types
 The basic blur method is to pixelize the faces, but you can add the following `blur` argument to your command line to have a gaussian blur :
 ```bash
-python blur.py name_of_file_or_folder.extension --blur
+python main.py name_of_file_or_folder.extension --blur
 ```
 
 ### Optional : Upgrade performances
@@ -95,6 +101,9 @@ Make sure to add it to the `utils` folder, and to change the name in the variabl
 This project uses the YOLOv8-Face model provided by [lindevs/yolov8-face](https://github.com/lindevs/yolov8-face), which offers pre-trained YOLOv8 models specifically optimized for face detection.
 
 The original models were trained on the WIDERFace dataset and are released under the AGPL-3.0 license.
+
+The STT and TTS version uses the
+[Whisper from OpenAI](https://huggingface.co/openai/whisper-large-v3-turbo), and [XTTS-v2 from Coqui](https://huggingface.co/coqui/XTTS-v2) libraries, actual open source SOTA models for STT and TTS performances.
 
 ## LICENSE
 
