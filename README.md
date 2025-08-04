@@ -24,6 +24,11 @@ Run the following commands to install the required dependencies:
 ```bash
 pip install -r requirements.txt
 ```
+There is a little problem with a `numpy` dependency, so you need to install separately TTS 0.22.0 (it will send an error message but still works) :
+
+```bash
+pip install TTS==0.22.0
+```
 
 ### 3. Accepted formats of files
 
