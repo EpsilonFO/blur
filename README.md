@@ -24,11 +24,6 @@ Run the following commands to install the required dependencies:
 ```bash
 pip install -r requirements.txt
 ```
-There is a little problem with a `numpy` dependency, so you need to install separately TTS 0.22.0 (it will send an error message but still works) :
-
-```bash
-pip install TTS==0.22.0
-```
 
 ### 3. Accepted formats of files
 
@@ -77,7 +72,13 @@ For both pre-recorded or realtime blur, you can change the power of the pixelate
 To anonymize the voice, we created a non-inversible method, using fast fourier transformations. However, depending on the speaker's voice, anonymization may be more or less satisfactory. To modify the result, you can change the value of the `shift_amount` variable in the `config` file.
 
 ### Optional : Other type of voice blur
-Another type of voice blur is implemented in the script. It uses 2 AI libraries, first to proceed to Speech-To-Text (STT) with [Whisper from OpenAI](https://huggingface.co/openai/whisper-large-v3-turbo), then use this text for Text-To-Speech (TTS) with [XTTS-v2 from Coqui](https://huggingface.co/coqui/XTTS-v2). We will have a completely synthetized voice, which makes it completely unrecognizable. However, nowadays models are still not fully convincing, because you lose a lot of speech details and emotions. To use this format, just add `--tts` to the end of your command line :
+Another type of voice blur is implemented in the script. It uses 2 AI libraries, first to proceed to Speech-To-Text (STT) with [Whisper from OpenAI](https://huggingface.co/openai/whisper-large-v3-turbo), then use this text for Text-To-Speech (TTS) with [XTTS-v2 from Coqui](https://huggingface.co/coqui/XTTS-v2). We will have a completely synthetized voice, which makes it completely unrecognizable. However, nowadays models are still not fully convincing, because you lose a lot of speech details and emotions. To use this format, first install the TTS library :
+```bash
+pip install TTS==0.22.0
+```
+(it will show you an error message but still works).
+
+Then, just add `--tts` to the end of your command line :
 ```bash
 python main.py name_of_file_or_folder.extension --tts
 ```
