@@ -5,7 +5,6 @@ from config import image_exts, video_exts
 from scripts.image import process_image
 from scripts.video import process_video, add_audio_to_video
 from scripts.audio import process_audio
-from scripts.tts_ai import process_tts
 from scripts.subtitles import add_subtitles
 
 def process(path, use_blur='pixelate', use_tts=False):
@@ -28,6 +27,7 @@ def process(path, use_blur='pixelate', use_tts=False):
         add_audio_to_video(path, tmp_video_path, blurred_output_path)
         # Step 3: Create final version with anonymized audio
         if use_tts:
+            from scripts.tts_ai import process_tts
             process_tts(blurred_output_path, anonymized_output_path, subtitled_output_path, use_blur=use_blur)
         else:
             process_audio(blurred_output_path, anonymized_output_path, subtitled_output_path)
@@ -45,21 +45,19 @@ def main(path, use_blur='pixelate', use_tts=False):
         path (str): Path to file or directory to process
         use_blur (bool): If True, uses Gaussian blur; if False, uses pixelation
     """
-
-    # Check if path is a single file
+    
+    paths_to_process = []
     if os.path.isfile(path):
-        process(path, use_blur=use_blur, use_tts=use_tts)
-    # Check if path is a directory
+        paths_to_process.append(path)
     elif os.path.isdir(path):
-        # Get list of all files in directory
         files = os.listdir(path)
-        
-        # Process each file in the directory
-        for f in files:
-            full_path = os.path.join(path, f)
-            process(full_path, use_blur=use_blur, use_tts=use_tts)
+        paths_to_process.extend(os.path.join(path, f) for f in files)
     else:
         print("Invalid path. Please provide a valid image, video, or folder.")
+
+    for p in paths_to_process:
+        process(p, use_blur=use_blur, use_tts=use_tts)
+
 
 if __name__ == "__main__":
     # Set up command line argument parsing
