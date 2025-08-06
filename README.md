@@ -24,6 +24,22 @@ Run the following commands to install the required dependencies:
 ```bash
 pip install -r requirements.txt
 ```
+You also need to install `ffmpeg` :
+- Mac :
+Install `Homebrew` :
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+Then install `ffmpeg`:
+```bash
+brew install ffmpeg
+```
+
+- Ubuntu :
+```bash
+sudo apt update
+sudo apt install ffmpeg
+```
 
 ### 3. Accepted formats of files
 
