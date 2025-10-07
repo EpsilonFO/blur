@@ -4,7 +4,7 @@ import numpy as np
 from config import blur_size, pixel_size, model, margin
 
 # Mémoire des visages détectés sur les dernières frames (3 frames max)
-recent_faces = deque(maxlen=30)
+recent_faces = deque(maxlen=1)
 
 def anonymize_face(image, x, y, w, h, use_blur='pixelate'):
     """

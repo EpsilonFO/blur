@@ -25,7 +25,7 @@ def apply_blur(frame, x, y, w, h):
     return frame
 
 # Initialisation de la webcam
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(0, cv2.CAP_AVFOUNDATION)
 mode = 'pixelate'  # Mode par défaut
 while True:
     ret, frame = cap.read()

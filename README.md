@@ -1,4 +1,5 @@
 # Blur Project
+![](utils/pp_blurred.jpg)
 
 ## Prerequisites Commands
 
@@ -41,9 +42,9 @@ To blur the faces on your pictures or videos, follow these simple steps :
 - Add your files (or folder) to the same repository of the `main.py` file.
 - Execute the following line in your command line :
 ```bash
-python main.py name_of_file_or_folder.extension
+uv run python main.py name_of_file_or_folder.extension
 ```
-- Wait for the process (the progress bar indicates how long it will take - usually really fast for photos, a bit longer for videos)
+- Wait for the process (the progress bar indicates how long it will take - usually really fast for photos but longer for the first one, a bit longer for videos)
 
 If you give a name of folder, all the files in the folder will be processed.
 The files will be saved at the same place of the original ones.
@@ -65,7 +66,7 @@ ffmpeg -i filename_blurred_anonymized.extension -vf subtitles=filename_blurred.s
 ### Real time video blur
 You can also blur your face in real time with your camera :
 ```bash
-python realtime_blur.py
+uv run python realtime_blur.py
 ```
 You can switch between basic and pixelated blur by clicking on `b` or `p`.
 
@@ -78,13 +79,13 @@ To anonymize the voice, we created a non-inversible method, using fast fourier t
 ### Optional : Other type of voice blur
 Another type of voice blur is implemented in the script. It uses 2 AI libraries, first to proceed to Speech-To-Text (STT) with [Whisper from OpenAI](https://huggingface.co/openai/whisper-large-v3-turbo), then use this text for Text-To-Speech (TTS) with [XTTS-v2 from Coqui](https://huggingface.co/coqui/XTTS-v2). We will have a completely synthetized voice, which makes it completely unrecognizable. However, nowadays models are still not fully convincing, because you lose a lot of speech details and emotions. To use this format, just add `--tts` to the end of your command line :
 ```bash
-python main.py name_of_file_or_folder.extension --tts
+uv run python main.py name_of_file_or_folder.extension --tts
 ```
 
 ### Optional : Different blur types
 The basic blur method is to pixelize the faces, but you can add the following `blur` argument to your command line to have a gaussian blur :
 ```bash
-python main.py name_of_file_or_folder.extension --blur
+uv run python main.py name_of_file_or_folder.extension --blur
 ```
 
 ### Optional : Upgrade performances
