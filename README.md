@@ -1,5 +1,5 @@
 # Blur Project
-![](utils/pp_blurred.jpg)
+![](utils/demo.gif)
 
 ## Prerequisites Commands
 
