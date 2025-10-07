@@ -1,9 +1,9 @@
 [project]
 name = "blur"
 version = "0.1.0"
-description = "Add your description here"
+description = "Blur photos, videos or in realtime"
 readme = "README.md"
-requires-python = ">=3.12"
+requires-python = ">=3.11"
 dependencies = [
     "moviepy>=2.2.1",
     "numpy>=1.25.0",
@@ -15,5 +15,6 @@ dependencies = [
     "scipy>=1.11.4",
     "torch>=2.7.1",
     "tqdm>=4.67.1",
+    "TTS==0.22.0",
     "ultralytics>=8.3.159",
 ]
