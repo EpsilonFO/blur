@@ -4,25 +4,13 @@
 
 To set up the environment for the **Blur** project, follow these detailed steps:
 
-### 1. Create a Virtual Machine
-Set up a virtual machine using your preferred tool (e.g., VirtualBox, VMware, or a cloud provider). Ensure the virtual machine has Python installed.
-Python 3.10 is recommanded.
 
-For example :
-```bash
-python3.10 -m venv .venv
-```
-Then, enter your virtual machine :
-```bash
-source .venv/bin/activate
-```
-
-
-### 2. Install Dependencies
+### 1. Install Dependencies
 Run the following commands to install the required dependencies:
 
 ```bash
-pip install -r requirements.txt
+cd blur/
+uv sync
 ```
 You also need to install `ffmpeg` :
 - Mac :
